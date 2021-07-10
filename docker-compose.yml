@@ -1,0 +1,31 @@
+version: "3.7"
+services:
+    database:
+        image: postgres:latest
+        ports:
+            - 5432:5432
+        environment:
+            POSTGRES_USER: tiberlas
+            POSTGRES_PASSWORD: fortuna23
+            POSTGRES_DB: dr_help
+        networks:
+            - demo
+    backend:
+        build: ./dr_help_backend
+        container_name: dr_help_backend
+        restart: on-failure
+        networks:
+            - demo
+        ports:
+            - 8080:8080
+        environment:
+            POSTGRES_HOST: database
+            POSTGRES_DB: dr_help
+            POSTGRES_USERNAME: tiberlas
+            POSTGRES_PASSWORD: fortuna23
+        depends_on:
+            - database
+    networks:
+        demo:
+            name: demo
+            driver: bridge

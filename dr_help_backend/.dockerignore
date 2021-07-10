@@ -1,0 +1,14 @@
+*/.gitignore
+*/.git
+*/.vscode
+*/.editorconfig
+*/.settings
+*/.mvn
+*/target
+
+*/Dockerfile
+*/.dockerignore
+*/*.iml
+*/*.md
+*/mvnw
+*/mvnw.cmd
